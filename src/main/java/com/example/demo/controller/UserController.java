@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.User;
 import com.example.demo.model.Account;
 import com.example.demo.repository.UserRepository;
 
@@ -40,14 +43,29 @@ public class UserController {
 	//ログインを実行する
 	@PostMapping("/login")
 	public String login(
+
 			@RequestParam String email,
 			@RequestParam String password,
 			Model model) {
-		if (email == null || email.length() == 0) {
+		if (email.length() == 0 || password.length() == 0) {
 			model.addAttribute("message", "入力して下さい");
+			return "login";
+		}
+
+		List<User> userList = userRepository.findByEmailAndPassword(email, password);
+		if (userList == null || userList.size() == 0) {
+			// 存在しなかった場合
+			model.addAttribute("message", "メールアドレスとパスワードが一致しませんでした");
+			return "login";
 
 		}
-		return "login";
+		User user = userList.get(0);
+		// セッション管理されたアカウント情報にIDと名前をセット
+
+		account.setEmail(user.getEmail());
+
+		// 「/items」へのリダイレクト
+		return "Recipes";
 	}
 
 	// 会員登録画面の表示
@@ -56,4 +74,5 @@ public class UserController {
 		return "Account";
 
 	}
+
 }

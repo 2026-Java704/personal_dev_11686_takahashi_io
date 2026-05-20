@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,8 +14,29 @@ import jakarta.persistence.Table;
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String name;
+
+	private Integer id; //レシピID
+	private String name; //料理名
+	private String recpes; //レシピ
+	@Column(name = "user_id")
+	private Integer userId; //ユーザーID
+
+	/*@Column(name = "category_id")
+	private Integer categoryId; *///カテゴリーID
+
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category category;
+
+	public Recipe() {
+	}
+
+	public Recipe(Integer id, String name, String recipe, Category category) {
+		this.id = id;
+		this.name = name;
+		this.recipe = recipe;
+		this.category = category;
+	}
 
 	public Integer getId() {
 		return id;
@@ -49,18 +71,5 @@ public class Recipe {
 	}
 
 	private String recipe;
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
-
-	public Recipe() {
-	}
-
-	public Recipe(Integer id, String name, String recipe, Category category) {
-		this.id = id;
-		this.name = name;
-		this.recipe = recipe;
-		this.category = category;
-	}
 
 }
