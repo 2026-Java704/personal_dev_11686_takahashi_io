@@ -17,7 +17,7 @@ public class Recipe {
 
 	private Integer id; //レシピID
 	private String name; //料理名
-	private String recpes; //レシピ
+	private String recipes; //レシピ
 	@Column(name = "user_id")
 	private Integer userId; //ユーザーID
 
@@ -29,10 +29,10 @@ public class Recipe {
 	}
 
 	// コンストラクタ
-	public Recipe(Integer id, String name, String recpes, Integer userId, Category category, String recipe) {
+	public Recipe(Integer id, String name, String recipes, Integer userId, Category category, String recipe) {
 		this.id = id;
 		this.name = name;
-		this.recpes = recpes;
+		this.recipes = recipes;
 		this.userId = userId;
 		this.category = category;
 
@@ -57,12 +57,12 @@ public class Recipe {
 
 	}
 
-	public String getrecpes() {
-		return recpes;
+	public String getrecipes() {
+		return recipes;
 	}
 
-	public void setId(String recpes) {
-		this.recpes = recpes;
+	public void setId(String recipes) {
+		this.recipes = recipes;
 	}
 
 	public Category getCategory() {
