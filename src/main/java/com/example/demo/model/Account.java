@@ -7,10 +7,11 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class Account {
 
+	private String name;
 	private String email;
 	private String password;
-	private String passwordConfirm;
 
+	//コンストラクター
 	public Account() {
 	}
 
@@ -19,11 +20,14 @@ public class Account {
 		this.password = password;
 	}
 
-	public Account(String email, String password, String passwordConfirm) {
+	//ゲッターセッター
 
-		this.email = email;
-		this.password = password;
-		this.passwordConfirm = passwordConfirm;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -40,14 +44,6 @@ public class Account {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
 	}
 
 }

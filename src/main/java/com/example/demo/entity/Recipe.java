@@ -21,9 +21,6 @@ public class Recipe {
 	@Column(name = "user_id")
 	private Integer userId; //ユーザーID
 
-	/*@Column(name = "category_id")
-	private Integer categoryId; *///カテゴリーID
-
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -31,12 +28,17 @@ public class Recipe {
 	public Recipe() {
 	}
 
-	public Recipe(Integer id, String name, String recipe, Category category) {
+	// コンストラクタ
+	public Recipe(Integer id, String name, String recpes, Integer userId, Category category, String recipe) {
 		this.id = id;
 		this.name = name;
-		this.recipe = recipe;
+		this.recpes = recpes;
+		this.userId = userId;
 		this.category = category;
+
 	}
+
+	//ゲッターセッター
 
 	public Integer getId() {
 		return id;
@@ -52,14 +54,15 @@ public class Recipe {
 
 	public void setName(String name) {
 		this.name = name;
+
 	}
 
-	public String getRecipe() {
-		return recipe;
+	public String getrecpes() {
+		return recpes;
 	}
 
-	public void setRecipe(String recipe) {
-		this.recipe = recipe;
+	public void setId(String recpes) {
+		this.recpes = recpes;
 	}
 
 	public Category getCategory() {
@@ -69,7 +72,5 @@ public class Recipe {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	private String recipe;
 
 }

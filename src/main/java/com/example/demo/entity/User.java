@@ -15,7 +15,9 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	//private String passwordConfirm;
 
+	//コンストラクタ
 	public User() {
 	}
 
@@ -32,6 +34,14 @@ public class User {
 		this.password = password;
 	}
 
+	public User(String name, String email, String password) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		//this.passwordConfirm = passwordConfirm;
+	}
+
+	//ゲッターセッター
 	public Integer getId() {
 		return id;
 	}
@@ -64,4 +74,11 @@ public class User {
 		this.password = password;
 	}
 
+	/*public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}*/
 }

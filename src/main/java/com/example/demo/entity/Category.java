@@ -13,22 +13,18 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String email;
-	private String password;
 
-	public Category(Integer id, String name, String email, String password) {
+	// コンストラクタ
+	public Category() {
+	}
+
+	public Category(Integer id, String name) {
 		this.id = id;
 		this.name = name;
-		this.email = email;
-		this.password = password;
+
 	}
 
-	public Category(String email, String password) {
-
-		this.email = email;
-		this.password = password;
-	}
-
+	//ゲッターセッター
 	public Integer getId() {
 		return id;
 	}
@@ -43,22 +39,6 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }
