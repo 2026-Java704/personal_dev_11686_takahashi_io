@@ -8,7 +8,8 @@ import com.example.demo.entity.Recipe;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
-	List<Recipe> findByCategory(Integer ategory);
+	List<Recipe> findByCategoryId(Integer categoryId);
 
 	List<Recipe> findByNameContaining(String keyword);
+
 }

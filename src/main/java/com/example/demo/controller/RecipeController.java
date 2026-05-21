@@ -26,6 +26,7 @@ public class RecipeController {
 	// 商品一覧表示
 	@GetMapping("/recipes")
 	public String index(
+
 			@RequestParam(defaultValue = "") Integer categoryId,
 			@RequestParam(defaultValue = "") String keyword,
 			Model model) {
@@ -34,25 +35,26 @@ public class RecipeController {
 		List<Category> categoryList = categoryRepository.findAll();
 		model.addAttribute("categories", categoryList);
 
-		// 商品一覧情報の取得
+		// レシピ一覧情報の取得
 		List<Recipe> recipeList = null;
 
 		if (categoryId != null) {
+			//カテゴリーIDを指定して一覧取得
+			recipeList = recipeRepository.findByCategoryId(categoryId);
 
-			//レシピテーブル
-			recipeList = recipeRepository.findByCategory(categoryId);
 		} else if (keyword.length() > 0) {
 			// 商品名による部分一致検索 
-			//itemList = itemRepository.findByNameLike("%" + keyword + "%");  //  // Likeを利用した場合は「%」が必要です
+
 			recipeList = recipeRepository.findByNameContaining(keyword);
 
 		} else {
-			// 全商品検索
 			recipeList = recipeRepository.findAll();
-		}
+			// 全商品検索
 
+		}
+		model.addAttribute("recipes", recipeList);
+		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("recipe", recipeList);
 
 		return "Recipes";
 
