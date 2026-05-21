@@ -59,4 +59,8 @@ public class RecipeController {
 		return "Recipes";
 
 	}
+
+	@GetMapping("/recipes/detail/{id}")
+	public String detail() {
+	}
 }
