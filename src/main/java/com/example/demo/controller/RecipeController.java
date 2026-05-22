@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Recipe;
+import com.example.demo.model.Account;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.RecipeRepository;
 
@@ -19,9 +21,14 @@ public class RecipeController {
 	private final CategoryRepository categoryRepository;
 	private final RecipeRepository recipeRepository;
 
-	public RecipeController(CategoryRepository categoryRepository, RecipeRepository recipeRepository) {
+	private final Account account;
+
+	public RecipeController(CategoryRepository categoryRepository,
+			RecipeRepository recipeRepository,
+			Account account) {
 		this.categoryRepository = categoryRepository;
 		this.recipeRepository = recipeRepository;
+		this.account = account;
 	}
 
 	// 商品一覧表示
@@ -38,6 +45,9 @@ public class RecipeController {
 
 		// レシピ一覧情報の取得
 		List<Recipe> recipeList = null;
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
 
 		if (categoryId != null) {
 			//カテゴリーIDを指定して一覧取得
@@ -61,27 +71,34 @@ public class RecipeController {
 
 	}
 
-	/*//レシピ新規作成
+	//レシピ新規作成
 	@GetMapping("/recipes/add")
 	public String create() {
+
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
 		return "addRecipes";
 	}
-	
+
 	//新規登録処理
 	@PostMapping("/recipes/add")
 	public String add(
-			@RequestParam(defaultValue = "") Integer user_Id,
-			@RequestParam(defaultValue = "") Integer category_Id,
 			@RequestParam(defaultValue = "") String name,
-			@RequestParam(defaultValue = "") String recipeDetail) {
-	
-		Recipe recipe = new Recipe();
-	
-		recipeRepository.save(recipe);
-	
+			@RequestParam(defaultValue = "") String detail,
+			@RequestParam(defaultValue = "") Integer userId,
+			@RequestParam(defaultValue = "") Category category) {
+
+		Recipe recipes = new Recipe(name, detail, userId, category);
+
+		recipeRepository.save(recipes);
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
+
 		return "redirect:/recipes";
-	
-	}*/
+
+	}
 
 	//レシピを取得
 	@GetMapping("/recipes/detail/{id}")
@@ -90,6 +107,10 @@ public class RecipeController {
 			Model model) {
 		Recipe recipe = recipeRepository.findById(id).get();
 		model.addAttribute("recipe", recipe);
+
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
 
 		return "recipeDetail";
 	}

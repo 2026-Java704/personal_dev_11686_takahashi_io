@@ -4,25 +4,33 @@
 <head>
 	<meta charset="UTF-8">
 	<title>レシピ一覧</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-
-	<h1>レシピ一覧</h1>
+	<header>
+	<h1>サイト名</h1>
 	<hr>
-	レシピ検索
+	こんにちは、[[${@account.name}]]さん<br>
+	
+	<a href="/">ログアウトする</a>
+	<h3>レシピ検索</h3>
+	
 	<form action="/recipes" method="get">
 		<input type="text" name="keyword" th:value="${keyword}">
 		<button>検索</button>
 
-	</form>
+		</form>
 	
-	<form action="/recipes" method="get">
-		<button>投稿</button>	
+	<form action="/recipes/add" method="get">
+		<p><button>追加投稿</button></p>
+	
+			
 		
 	</form>
 	
-	
+	</header>
+	<nav>
 	カテゴリー検索:
 	<a href="/recipes">全レシピ</a>
 
@@ -30,11 +38,13 @@
 
 	<a th:each="category:${categories}"
 
- 		th:href="@{/recipes?categoryId={id}(id = ${category.id})}" 
+ 		th:href="@{/recipes?categoryId={id}(id = ${category.id})}"	 
 		 th:text="${category.name}"
-		 style="margin-right:5px;">
+		 style="margin-right:7px;"
+	>
 
 	</a>
+	</nav>
 	<hr>
 
 	<!--料理一覧-->
@@ -51,7 +61,7 @@
 		
 	</p>
 		
-
+<footer>レシピサイト</footer>
 
 </body>
 

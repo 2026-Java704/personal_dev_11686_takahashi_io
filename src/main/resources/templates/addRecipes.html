@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>新規レシピ作成</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+
+
+<head>
+	<h1>レシピ投稿画面</h1>
+	こんにちは、[[${@account.name}]]さん
+
+</head>
+
 <body>
+	<form action="/recipes/add" method="post">
+
+		<p>
+			<input type="text" name="name" placeholder="料理名">
+		</p>
+		<p>
+			<textarea name="detail" placeholder="作り方"></textarea>
+
+		</p>
+		<p>
+			<button>投稿</button>
+
+		</p>
+
+	</form>
+
+
+
+
 
 </body>
+
 </html>

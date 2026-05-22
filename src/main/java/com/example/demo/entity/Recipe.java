@@ -24,28 +24,27 @@ public class Recipe {
 	@ManyToOne
 	@JoinColumn(name = "category_id") //カテゴリー
 	private Category category;
-	//private String recipeDetail;
 
 	public Recipe() {
 	}
 
 	// コンストラクタ
-	public Recipe(Integer id, String name, String recipe, Integer userId, Category category) {
+	/*public Recipe(Integer id, String name, String recipe, Integer userId, Category category) {
 		this.id = id;
 		this.name = name;
 		this.recipe = recipe;
 		this.userId = userId;
 		this.category = category;
-
-	}
-
-	/*public Recipe(String name, Integer userId, Category category, String recipeDetail) {
-		this.name = name;
-		this.userId = userId;
-		this.category = category;
-		this.recipeDetail = recipeDetail;
+	
 	}
 	*/
+	public Recipe(String name, String recipe, Integer userId, Category category) {
+		this.name = name;
+		this.recipe = recipe;
+		this.userId = userId;
+		this.category = category;
+	}
+
 	//ゲッターセッター
 
 	public Integer getId() {
@@ -88,13 +87,5 @@ public class Recipe {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	/*	public String getRecipeDetail() {
-			return recipeDetail;
-		}
-	
-		public void setRecipeDetail(String recipeDetail) {
-			this.recipeDetail = recipeDetail;
-		}*/
 
 }
