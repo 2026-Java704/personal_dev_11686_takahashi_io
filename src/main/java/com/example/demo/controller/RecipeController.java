@@ -31,6 +31,15 @@ public class RecipeController {
 		this.account = account;
 	}
 
+	//投稿者を取得
+	/*@GetMapping("/recipes")
+	public String index() {
+		@RequestParam(defaultValue = "") String name,
+		Model model){
+			List<<User> 
+		}
+	}*/
+
 	// 商品一覧表示
 	@GetMapping("/recipes")
 	public String index(

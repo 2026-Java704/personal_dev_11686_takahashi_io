@@ -11,9 +11,9 @@
 	<h1>新規会員登録</h1>
 	お客様情報
 	
-	<ul th:if="${errorList}" class="error">
-					<li th:each="error:${errorList}" th:text="${error}" style="color: red"></li>
-				</ul>
+	<h4><ul th:if="${errorList}" class="error">
+					<li th:each="error:${errorList}" th:text="${error}" style="color: rgb(255, 128, 128)"></li>
+				</ul></h4>
 
 	<form action="/users/add" method="post">
 		<table border="1">

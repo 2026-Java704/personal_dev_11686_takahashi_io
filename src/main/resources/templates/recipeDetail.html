@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>レシピ作成</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+	<header th:replace="~{header}"></header>
 	<h3><a th:text="${recipe.name}"></a>の作り方</h3>
+	
+	投稿者:<!--<a th:text="${users.name}"></a>-->
+	
+	
 	<form action="/recipes" method="get">
 		
 		

@@ -8,39 +8,49 @@
 </head>
 
 <body>
-	<header>
-		<h1>サイト名</h1>
+	<header th:replace="~{header}"></header>
+		<!--<h1>サイト名</h1>
 		<hr>
 		こんにちは、[[${@account.name}]]さん<br>
 
 		<a href="/">ログアウトする</a>
-		<h3>レシピ検索</h3>
+	</header>-->
+	<h3>レシピ検索</h3>
+	
+	<form action="/recipes" class="search-form-1" method="get">
+	    <label>
+	        <input type="text" name="keyword" th:value="${keyword}" placeholder="キーワードを入力">
+	    </label>
+	    <button type="submit" aria-label="検索"></button>
+	</form>
 
-		<form action="/recipes" method="get">
-			<input type="text" name="keyword" th:value="${keyword}">
-			<button>検索</button>
+	
 
-		</form>
+	<!--<form action="/recipes" method="get">-->
+	<!--	<input type="text" name="keyword" th:value="${keyword}">
+		<button>検索</button>
 
-		<form action="/recipes/add" method="get">
-			<p><button>追加投稿</button></p>
+	</form>-->
+
+	<form action="/recipes/add" method="get">
+		<p><button>追加投稿</button></p>
 
 
 
-		</form>
+	</form>
 
-	</header>
-	<nav>
-		カテゴリー検索:
-		<a href="/recipes">全レシピ</a>
 
-		<!--カテゴリー検索-->
 
-		<a th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
-			th:text="${category.name}" style="margin-right:7px;">
+	カテゴリー検索:
+	<a href="/recipes">全レシピ</a>
 
-		</a>
-	</nav>
+	<!--カテゴリー検索-->
+
+	<a th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
+		th:text="${category.name}" style="margin-right:7px;">
+
+	</a>
+
 	<hr>
 
 	<!--料理一覧-->
