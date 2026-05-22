@@ -65,13 +65,13 @@ public class UserController {
 
 		account.setEmail(user.getEmail());
 
-		return "Recipes";
+		return "recipes";
 	}
 
 	// 会員登録画面の表示
 	@GetMapping("/users/new")
 	public String create() {
-		return "Account";
+		return "account";
 
 	}
 

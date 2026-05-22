@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Category;
@@ -56,11 +57,18 @@ public class RecipeController {
 		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("keyword", keyword);
 
-		return "Recipes";
+		return "recipes";
 
 	}
 
+	//レシピを取得
 	@GetMapping("/recipes/detail/{id}")
-	public String detail() {
+	public String detail(
+			@PathVariable Integer id,
+			Model model) {
+		Recipe recipe = recipeRepository.findById(id).get();
+		model.addAttribute("recipe", recipe);
+
+		return "recipeDetail";
 	}
 }
