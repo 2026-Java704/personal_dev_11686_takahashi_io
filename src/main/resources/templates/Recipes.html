@@ -9,12 +9,7 @@
 
 <body>
 	<header th:replace="~{header}"></header>
-		<!--<h1>サイト名</h1>
-		<hr>
-		こんにちは、[[${@account.name}]]さん<br>
-
-		<a href="/">ログアウトする</a>
-	</header>-->
+		
 	<h3>レシピ検索</h3>
 	
 	<form action="/recipes" class="search-form-1" method="get">
@@ -32,13 +27,7 @@
 
 	</form>-->
 
-	<form action="/recipes/add" method="get">
-		<p><button>追加投稿</button></p>
-
-
-
-	</form>
-
+	
 
 
 	カテゴリー検索:
@@ -52,6 +41,13 @@
 	</a>
 
 	<hr>
+	<form action="/recipes/add" method="get">
+			<p><button>新規投稿</button></p>
+
+
+
+		</form>
+
 
 	<!--料理一覧-->
 
