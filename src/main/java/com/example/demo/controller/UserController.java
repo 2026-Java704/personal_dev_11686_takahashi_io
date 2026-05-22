@@ -63,15 +63,17 @@ public class UserController {
 		User user = userList.get(0);
 		// セッション管理されたアカウント情報にIDと名前をセット
 
+		account.setId(user.getId());
+		account.setName(user.getName());
 		account.setEmail(user.getEmail());
 
-		return "recipes";
+		return "redirect:/recipes";
 	}
 
 	// 会員登録画面の表示
 	@GetMapping("/users/new")
 	public String create() {
-		return "account";
+		return "Account";
 
 	}
 

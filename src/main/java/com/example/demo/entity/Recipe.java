@@ -22,8 +22,9 @@ public class Recipe {
 	private Integer userId; //ユーザーID
 
 	@ManyToOne
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "category_id") //カテゴリー
 	private Category category;
+	//private String recipeDetail;
 
 	public Recipe() {
 	}
@@ -38,6 +39,13 @@ public class Recipe {
 
 	}
 
+	/*public Recipe(String name, Integer userId, Category category, String recipeDetail) {
+		this.name = name;
+		this.userId = userId;
+		this.category = category;
+		this.recipeDetail = recipeDetail;
+	}
+	*/
 	//ゲッターセッター
 
 	public Integer getId() {
@@ -57,12 +65,20 @@ public class Recipe {
 
 	}
 
-	public String getrecipes() {
-		return recipe;
+	public String getRecipe() {
+		return recipe.replaceAll("\n", "<br>");
 	}
 
-	public void setId(String recipe) {
+	public void setRecipe(String recipe) {
 		this.recipe = recipe;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public Category getCategory() {
@@ -72,5 +88,13 @@ public class Recipe {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	/*	public String getRecipeDetail() {
+			return recipeDetail;
+		}
+	
+		public void setRecipeDetail(String recipeDetail) {
+			this.recipeDetail = recipeDetail;
+		}*/
 
 }

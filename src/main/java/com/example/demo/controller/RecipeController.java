@@ -41,7 +41,7 @@ public class RecipeController {
 
 		if (categoryId != null) {
 			//カテゴリーIDを指定して一覧取得
-			recipeList = recipeRepository.findByCategoryId(categoryId);
+			recipeList = recipeRepository.findByCategory_Id(categoryId);
 
 		} else if (keyword.length() > 0) {
 			// 商品名による部分一致検索 
@@ -60,6 +60,28 @@ public class RecipeController {
 		return "recipes";
 
 	}
+
+	/*//レシピ新規作成
+	@GetMapping("/recipes/add")
+	public String create() {
+		return "addRecipes";
+	}
+	
+	//新規登録処理
+	@PostMapping("/recipes/add")
+	public String add(
+			@RequestParam(defaultValue = "") Integer user_Id,
+			@RequestParam(defaultValue = "") Integer category_Id,
+			@RequestParam(defaultValue = "") String name,
+			@RequestParam(defaultValue = "") String recipeDetail) {
+	
+		Recipe recipe = new Recipe();
+	
+		recipeRepository.save(recipe);
+	
+		return "redirect:/recipes";
+	
+	}*/
 
 	//レシピを取得
 	@GetMapping("/recipes/detail/{id}")

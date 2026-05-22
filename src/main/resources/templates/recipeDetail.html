@@ -2,12 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>レシピ作成</title>
 </head>
 <body>
-	作り方
+	<h3><a th:text="${recipe.name}"></a>の作り方</h3>
 	<form action="/recipes" method="get">
 		
+		
 	</form>
+	<a th:utext="${recipe.recipe}"></a>
+	
 </body>
 </html>
