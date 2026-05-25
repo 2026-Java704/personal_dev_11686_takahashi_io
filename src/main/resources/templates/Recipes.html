@@ -31,18 +31,19 @@
 
 
 	カテゴリー検索:
-	<a href="/recipes">全レシピ</a>
+	
+	<a class="button-36" href="/recipes">全レシピ</a>
 
 	<!--カテゴリー検索-->
-	<!--<button class="button-1">ボタンデザイン</button>-->
-	<a th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
+
+	<a class="button-36"  th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
 		th:text="${category.name}" style="margin-right:7px;">
 
 	</a>
 
 	<hr>
 	<form action="/recipes/add" method="get">
-			<p><button>新規投稿</button></p>
+			<button>新規投稿</button>
 
 
 
@@ -55,6 +56,7 @@
 	<h3>レシピ名</h3>
 
 	<p th:each="recipe:${recipes}">
+		
 		<!--<td th:text="${recipe.name}"></td>-->
 		<a th:href="@{/recipes/detail/{id}(id=${recipe.id})}" th:text="${recipe.name}"></a>
 		<!--<a th:href="'/recipes/detail'+'${recipes.id}'" 
