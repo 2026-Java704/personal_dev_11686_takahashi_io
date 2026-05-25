@@ -8,16 +8,15 @@
 <body>
 	<header th:replace="~{header}"></header>
 	<h3><a th:text="${recipe.name}"></a>の作り方</h3>
-	
-	投稿者:<!--<a th:text="${users.name}"></a>-->
-	
-	
-	<form action="/recipes" method="get">
-		
-		
-	</form>
-	<a th:utext="${recipe.recipe}"></a>
+	<p>
+	    投稿者：
+	    <span th:text="${user.name}"></span>
+	</p>
+
+	<div th:utext="${recipe.recipe}"></div>
+
 	<br>
+
 	<a href="/recipes">レシピ一覧に戻る</a>
 	
 </body>

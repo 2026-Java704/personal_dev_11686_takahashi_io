@@ -8,19 +8,30 @@
 </head>
 
 
-<head>
-	<h1>レシピ投稿画面</h1>
-	こんにちは、[[${@account.name}]]さん
-
-</head>
-
 <body>
-	<form action="/recipes/add" method="post">
+	<header th:replace="~{header}"></header>
+	<h2>レシピ投稿画面</h2>
+	
+	<p>こんにちは、[[${@account.name}]]さん</p>
 
+
+
+	<form action="/recipes/add" method="post">
 		<p>
+		           カテゴリー
+		           <select name="categoryId">
+		               <option value="">選択してください</option>
+		               <option th:each="category : ${categories}"
+		                       th:value="${category.id}"
+		                       th:text="${category.name}">
+		               </option>
+		           </select>
+		       </p>
+
+		<p>料理名
 			<input type="text" name="name" placeholder="料理名">
 		</p>
-		<p>
+		<p>説明
 			<textarea name="detail" placeholder="作り方"></textarea>
 
 		</p>
@@ -31,7 +42,7 @@
 
 	</form>
 
-
+	<a href="/recipes">レシピ一覧に戻る</a>
 
 
 

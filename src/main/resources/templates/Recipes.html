@@ -10,7 +10,7 @@
 <body>
 	<header th:replace="~{header}"></header>
 		
-	<h3>レシピ検索</h3>
+	<h3>キーワード検索</h3>
 	
 	<form action="/recipes" class="search-form-1" method="get">
 	    <label>
@@ -34,7 +34,7 @@
 	<a href="/recipes">全レシピ</a>
 
 	<!--カテゴリー検索-->
-
+	<!--<button class="button-1">ボタンデザイン</button>-->
 	<a th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
 		th:text="${category.name}" style="margin-right:7px;">
 
@@ -50,7 +50,7 @@
 
 
 	<!--料理一覧-->
-
+	<main>
 
 	<h3>レシピ名</h3>
 
@@ -64,7 +64,7 @@
 	</p>
 
 	<footer>レシピサイト</footer>
-
+	</main>
 </body>
 
 </html>

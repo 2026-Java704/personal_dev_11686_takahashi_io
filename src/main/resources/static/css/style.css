@@ -13,7 +13,7 @@ header, nav, footer {
 }
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
-	color: #ffffff;
+	color: rgb(255, 255, 255);
 }
 /* ヘッダー内見出し */
 header h1 {
@@ -27,7 +27,7 @@ hr {
 }
 /* メイン */
 main {
-	background-color: #FFFFFF;
+	background-color: rgb(252, 255, 238);
 	min-height: 50px;
 	padding: 20px;
 }
