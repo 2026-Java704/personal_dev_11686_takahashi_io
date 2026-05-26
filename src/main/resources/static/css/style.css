@@ -104,6 +104,7 @@ ul.error{
 	    border: none;
 	    background-color: #9a9c96;
 	    cursor: pointer;
+		
 	}
 
 	.search-form-1 button::after {
@@ -114,12 +115,12 @@ ul.error{
 	    content: '';
 	}
 	/*ボタンデザイン*/
-	a.button-36 {
-	    display: flex;
-		flex-wrap: wrap;
-	    justify-content: center;
+	.button-36 {
+	    display:flex;
+		flex-wrap:wrap;
+	    justify-content:space-between;
 	    align-items: center;
-	    width: 70px;
+	 /*   width: 0px;*/
 	    margin: 0 auto;
 	    padding: .100em 1em;
 	    border: 1px solid #552f2b;
@@ -127,13 +128,14 @@ ul.error{
 	    background-color: #fff;
 	    color: #552f2b;
 	    font-size: 1em;
-		width: 50%;       
-			   max-width: 100px;
+		width: 10%;       
+ max-width: 100px;
 			   
 	}
 
 	.button-36:hover {
 	    border: none;
+	
 	    background-color: #552f2b;
 	    color: #fff;
 	    font-weight: 600;

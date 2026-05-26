@@ -36,7 +36,8 @@
 
 	<!--カテゴリー検索-->
 
-	<a class="button-36"  th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
+	<a class="button-36" 
+	 th:each="category:${categories}" th:href="@{/recipes?categoryId={id}(id = ${category.id})}"
 		th:text="${category.name}" style="margin-right:7px;">
 
 	</a>
